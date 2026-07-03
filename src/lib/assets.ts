@@ -5,8 +5,10 @@ const imageSlug = (file: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '')
 
-export const logoPath = '/img/optimized/logo.png'
+const assetPath = (file: string) => `${import.meta.env.BASE_URL}${file.replace(/^\/+/, '')}`
 
-export const optimizedImagePath = (file: string) => `/img/optimized/${imageSlug(file)}.jpg`
+export const logoPath = assetPath('img/optimized/logo.png')
 
-export const videoPath = (file: string) => encodeURI(`/video/${file}`)
+export const optimizedImagePath = (file: string) => assetPath(`img/optimized/${imageSlug(file)}.jpg`)
+
+export const videoPath = (file: string) => encodeURI(assetPath(`video/${file}`))
